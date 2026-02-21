@@ -34,7 +34,7 @@ func (m *oauth2TokenManager) getToken() (string, error) {
 	m.mu.Lock()
 	defer m.mu.Unlock()
 
-	if m.token != "" && time.Now().Before(m.expAt.Add(-30*time.Second)) {
+	if m.token != "" && time.Now().UTC().Before(m.expAt.Add(-30*time.Second)) {
 		return m.token, nil
 	}
 
@@ -68,7 +68,7 @@ func (m *oauth2TokenManager) getToken() (string, error) {
 	}
 
 	m.token = result.AccessToken
-	m.expAt = time.Now().Add(time.Duration(expiresIn) * time.Second)
+	m.expAt = time.Now().UTC().Add(time.Duration(expiresIn) * time.Second)
 
 	return m.token, nil
 }
