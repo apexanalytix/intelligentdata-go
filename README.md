@@ -100,6 +100,34 @@ client := intelligentdata.NewClient("svm...",
 - Go 1.22+
 - Zero external dependencies (stdlib only)
 
+## MCP Protocol Support
+
+This API is available as a native [Model Context Protocol](https://modelcontextprotocol.io) (MCP) server.
+
+### Tools (37), Prompts (20), Resources (7)
+
+| Category | Count | Description |
+|----------|-------|-------------|
+| MCP Tools | 37 | 1:1 mapped to API endpoints — same auth, rate limits, and plan access |
+| MCP Prompts | 20 | Multi-tool workflow templates (onboarding, compliance, risk, payment) |
+| MCP Resources | 7 | Reference datasets (tool inventory, risk categories, country coverage) |
+
+Prompts may be plan-gated. See [Pricing](https://portal.smartvmapi.com/pricing) for details.
+
+- [MCP Manifest](https://portal.smartvmapi.com/.well-known/mcp.json)
+- [Resource Content](https://portal.smartvmapi.com/api/portal/mcp/resources/{name})
+
+### Accessing Resource Content
+
+Resources provide reference data via HTTP:
+
+```bash
+curl https://portal.smartvmapi.com/api/portal/mcp/resources/tool_inventory
+curl https://portal.smartvmapi.com/api/portal/mcp/resources/supported_countries
+```
+
+Available resources: `tool_inventory`, `entity_risk_categories`, `healthcare_types`, `india_identity_types`, `certification_types`, `supported_countries`, `about`.
+
 ## Getting an API Key
 
 1. Sign up for a free account at [portal.smartvmapi.com](https://portal.smartvmapi.com/auth/register)
