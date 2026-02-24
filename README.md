@@ -100,6 +100,12 @@ client := intelligentdata.NewClient("svm...",
 - Go 1.22+
 - Zero external dependencies (stdlib only)
 
+## Getting an API Key
+
+1. Sign up for a free account at [portal.smartvmapi.com](https://portal.smartvmapi.com/auth/register)
+2. Navigate to Dashboard → API Keys
+3. Copy your API key (starts with `svm`)
+
 ## License
 
 MIT
